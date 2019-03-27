@@ -1,8 +1,8 @@
-FROM drsdre/php-laravel:7.3-cli-alpine
+FROM drsdre/php-laravel:{{VERSION}}-{{TYPE}}-{{OS}}
 
 MAINTAINER Andre Schuurman <docker@drsdre.org>
 
-LABEL Description="This image contains PHP 7.3 on alpine OS with extension needed for Laravel applications development like xDebug" Vendor="Andre Schuurman" Version="7.3-cli-alpine-dev"
+LABEL Description="This image contains PHP {{VERSION}} on {{OS}} OS with extension needed for Laravel applications development like xDebug" Vendor="Andre Schuurman" Version="{{VERSION}}-{{TYPE}}-{{OS}}-dev"
 
 ENV PHP_XDEBUG_DISPLAY_STARTUP_ERRORS="On" \
     PHP_XDEBUG_DISPLAY_ERRORS="On" \
