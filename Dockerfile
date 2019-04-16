@@ -25,14 +25,13 @@ RUN apk add --update --no-cache \
 	wget
 
 # Install PHP PECL xdebug extensions
-COPY conf.d/xdebug.ini /usr/local/etc/php/conf.d/xdebug.ini
-
 RUN apk add --no-cache --virtual .build-deps $PHPIZE_DEPS \
     && pecl install -o -f xdebug \
     &&  rm -rf /tmp/pear \
     && docker-php-ext-enable xdebug \
-    && echo "zend_extension=$(find /usr/local/lib/php/extensions/ -name xdebug.so)" >> /usr/local/etc/php/conf.d/xdebug.ini \
     && apk del -f .build-deps
+
+COPY conf.d/xdebug.ini /usr/local/etc/php/conf.d/xdebug.ini
 
 # Install Composer
 # Register the COMPOSER_HOME environment variable
