@@ -34,14 +34,6 @@ RUN apk add --no-cache --virtual .build-deps $PHPIZE_DEPS \
 COPY conf.d/xdebug.ini /usr/local/etc/php/conf.d/xdebug.ini
 
 # Install Composer
-# Register the COMPOSER_HOME environment variable
-ENV COMPOSER_HOME /composer
-
-# Add global binary directory to PATH and make sure to re-export it
-ENV PATH /composer/vendor/bin:$PATH
-
-# Install composer
-ENV COMPOSER_HOME /composer
 ENV PATH ./vendor/bin:/composer/vendor/bin:$PATH
 ENV COMPOSER_ALLOW_SUPERUSER 1
 RUN curl -o /tmp/composer-setup.php https://getcomposer.org/installer \

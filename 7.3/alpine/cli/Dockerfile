@@ -25,23 +25,15 @@ RUN apk add --update --no-cache \
 	wget
 
 # Install PHP PECL xdebug extensions
-COPY conf.d/xdebug.ini /usr/local/etc/php/conf.d/xdebug.ini
-
 RUN apk add --no-cache --virtual .build-deps $PHPIZE_DEPS \
     && pecl install -o -f xdebug \
     &&  rm -rf /tmp/pear \
     && docker-php-ext-enable xdebug \
     && apk del -f .build-deps
 
+COPY conf.d/xdebug.ini /usr/local/etc/php/conf.d/xdebug.ini
+
 # Install Composer
-# Register the COMPOSER_HOME environment variable
-ENV COMPOSER_HOME /composer
-
-# Add global binary directory to PATH and make sure to re-export it
-ENV PATH /composer/vendor/bin:$PATH
-
-# Install composer
-ENV COMPOSER_HOME /composer
 ENV PATH ./vendor/bin:/composer/vendor/bin:$PATH
 ENV COMPOSER_ALLOW_SUPERUSER 1
 RUN curl -o /tmp/composer-setup.php https://getcomposer.org/installer \
