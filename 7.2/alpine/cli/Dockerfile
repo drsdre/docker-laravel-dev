@@ -16,14 +16,7 @@ ENV PHP_XDEBUG_DISPLAY_STARTUP_ERRORS="On" \
     PHP_XDEBUG_PROFILER_ENABLE_TRIGGER="1" \
     PHP_OPCACHE_VALIDATE_TIMESTAMPS="1"
 
-# Install PHP PECL xdebug extensions
-RUN apk add --no-cache --virtual .build-deps $PHPIZE_DEPS \
-    && pecl install -o -f xdebug \
-    &&  rm -rf /tmp/pear \
-    && docker-php-ext-enable xdebug \
-    && apk del -f .build-deps
-
-COPY conf.d/xdebug.ini /usr/local/etc/php/conf.d/xdebug.ini
+RUN install-php-extensions xdebug
 
 # Add aliases for xdebug control
 RUN echo 'alias xoff="mv /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini.off && kill -USR2 1"' >> ~/.bashrc
@@ -31,7 +24,6 @@ RUN echo 'alias xon="mv /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini.off 
 
 # Install the extensions
 RUN apk add --update --no-cache \
-	git \
 	vim \
 	screen \
 	wget
