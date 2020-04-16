@@ -11,7 +11,7 @@ ENV PHP_XDEBUG_DISPLAY_STARTUP_ERRORS="On" \
     PHP_XDEBUG_REMOTE_ENABLE="1" \
     PHP_XDEBUG_REMOTE_CONNECT_BACK="0" \
     PHP_XDEBUG_REMOTE_PORT="9000" \
-    PHP_XDEBUG_PROFILER_ENABLE="1" \
+    PHP_XDEBUG_PROFILER_ENABLE="0" \
     PHP_XDEBUG_PROFILER_OUTPUT_DIR="/tmp/snapshots" \
     PHP_XDEBUG_PROFILER_ENABLE_TRIGGER="1" \
     PHP_OPCACHE_VALIDATE_TIMESTAMPS="1"
@@ -25,6 +25,7 @@ RUN echo 'alias xon="mv /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini.off 
 # Install the extensions
 RUN apk add --update --no-cache \
 	vim \
+	rsync \
 	screen \
 	wget
 
