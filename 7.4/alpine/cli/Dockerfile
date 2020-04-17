@@ -24,8 +24,11 @@ RUN echo 'alias xon="mv /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini.off 
 
 # Install the extensions
 RUN apk add --update --no-cache \
-	vim \
+	# Envoy push
+	openssh \
 	rsync \
+	# Tools
+	vim \
 	screen \
 	wget
 
