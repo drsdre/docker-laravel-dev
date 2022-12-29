@@ -1,8 +1,8 @@
-FROM drsdre/php-laravel:7.3-fpm-alpine
+FROM drsdre/php-laravel:8.0-fpm-alpine
 
 MAINTAINER Andre Schuurman <docker@drsdre.org>
 
-LABEL Description="This image contains PHP 7.3 on alpine OS with extension needed for Laravel applications development like xDebug" Vendor="Andre Schuurman" Version="7.3-fpm-alpine-dev"
+LABEL Description="This image contains PHP 8.0 on alpine OS with extension needed for Laravel applications development like xDebug" Vendor="Andre Schuurman" Version="8.0-fpm-alpine-dev"
 
 USER root
 

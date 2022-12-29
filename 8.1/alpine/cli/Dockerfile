@@ -1,8 +1,8 @@
-FROM drsdre/php-laravel:7.2-cli-alpine
+FROM drsdre/php-laravel:8.1-cli-alpine
 
 MAINTAINER Andre Schuurman <docker@drsdre.org>
 
-LABEL Description="This image contains PHP 7.2 on alpine OS with extension needed for Laravel applications development like xDebug" Vendor="Andre Schuurman" Version="7.2-cli-alpine-dev"
+LABEL Description="This image contains PHP 8.1 on alpine OS with extension needed for Laravel applications development like xDebug" Vendor="Andre Schuurman" Version="8.1-cli-alpine-dev"
 
 ENV PHP_XDEBUG_DISPLAY_STARTUP_ERRORS="On" \
     PHP_XDEBUG_DISPLAY_ERRORS="On" \
